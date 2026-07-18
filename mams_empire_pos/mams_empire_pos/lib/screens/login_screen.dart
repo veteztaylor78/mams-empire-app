@@ -10,9 +10,10 @@ class LoginScreen extends StatelessWidget {
     final passwordController = TextEditingController();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        title: const Text("MAMS Empire Login"),
         backgroundColor: Colors.green,
-        title: const Text("MAMS Empire POS"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -25,16 +26,6 @@ class LoginScreen extends StatelessWidget {
               color: Colors.green,
             ),
             const SizedBox(height: 20),
-
-            const Text(
-              "MAMS Empire",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 30),
 
             TextField(
               controller: usernameController,
@@ -59,7 +50,11 @@ class LoginScreen extends StatelessWidget {
 
             SizedBox(
               width: double.infinity,
+              height: 50,
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
@@ -68,7 +63,13 @@ class LoginScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text("LOGIN"),
+                child: const Text(
+                  "LOGIN",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ],
