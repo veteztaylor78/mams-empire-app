@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'products_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -7,7 +8,10 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MAMS Empire Dashboard"),
+        title: const Text(
+          'MAMS Empire POS',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green,
       ),
       body: GridView.count(
@@ -15,13 +19,24 @@ class DashboardScreen extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
-        children: const [
-          DashboardCard(title: "Products", icon: Icons.shopping_bag),
-          DashboardCard(title: "Sales", icon: Icons.point_of_sale),
-          DashboardCard(title: "Inventory", icon: Icons.inventory),
-          DashboardCard(title: "Customers", icon: Icons.people),
-          DashboardCard(title: "Reports", icon: Icons.bar_chart),
-          DashboardCard(title: "Settings", icon: Icons.settings),
+        children: [
+          DashboardCard(
+            title: 'Products',
+            icon: Icons.shopping_bag,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ProductsScreen(),
+                ),
+              );
+            },
+          ),
+          const DashboardCard(title: 'Sales', icon: Icons.point_of_sale),
+          const DashboardCard(title: 'Inventory', icon: Icons.inventory),
+          const DashboardCard(title: 'Customers', icon: Icons.people),
+          const DashboardCard(title: 'Reports', icon: Icons.bar_chart),
+          const DashboardCard(title: 'Settings', icon: Icons.settings),
         ],
       ),
     );
@@ -31,19 +46,20 @@ class DashboardScreen extends StatelessWidget {
 class DashboardCard extends StatelessWidget {
   final String title;
   final IconData icon;
+  final VoidCallback? onTap;
 
   const DashboardCard({
     super.key,
     required this.title,
     required this.icon,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
