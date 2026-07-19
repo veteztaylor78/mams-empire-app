@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: mams_empire_pos
+        working-directory: mobile_app
 
     steps:
       - name: Checkout repository
@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mams-empire-debug-apk
-          path: mams_empire_pos/build/app/outputs/flutter-apk/app-debug.apk
+          path: path: mobile_app/build/app/outputs/flutter-apk/app-debug.apk
